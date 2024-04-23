@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+use Infrangible\HtmlSitemap\Block\Sitemap\Catalog;
+use Magento\Framework\View\TemplateEngine\Php;
+
+/**
+ * @author      Andreas Knollmann
+ * @copyright   Copyright (c) 2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+ */
+
+/** @var Php $this */
+/** @var Catalog $block */
+
+?>
+
+<?php $categories = $block->getCategories(); ?>
+<?php if (count($categories) > 0): ?>
+    <ul class="level-<?php echo $block->getLevel(); ?> sitemap-categories">
+        <?php foreach ($categories as $category): ?>
+            <li class="level-<?php echo $block->getLevel(); ?> sitemap-category">
+                <a href="<?php echo $category->getUrl(); ?>"><?php echo $category->getName(); ?></a>
+                <?php $products = $block->getProducts($category); ?>
+                <?php if (count($products) > 0): ?>
+                    <ul class="level-<?php echo $block->getLevel(); ?> sitemap-products">
+                        <?php foreach ($products as $product): ?>
+                            <li class="level-<?php echo $block->getLevel(); ?> sitemap-product">
+                                <a href="<?php echo $product->getProductUrl(); ?>"><?php echo $product->getName(); ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+                <?php echo $block->renderCategories(intval($category->getId()), $block->getLevel() + 1); ?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ * @author      Andreas Knollmann
+ * @copyright   Copyright (c) 2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Infrangible\HtmlSitemap\Block\Sitemap" name="html_sitemap" template="Infrangible_HtmlSitemap::sitemap.phtml">
+                <block class="Infrangible\HtmlSitemap\Block\Sitemap\Catalog" name="html_sitemap_catalog" template="Infrangible_HtmlSitemap::sitemap/catalog.phtml">
+                    <block class="Infrangible\HtmlSitemap\Block\Sitemap\Catalog" name="html_sitemap_catalog_category" template="Infrangible_HtmlSitemap::sitemap/catalog/category.phtml"/>
+                    <container name="html_sitemap_catalog_additional"/>
+                </block>
+                <block class="Infrangible\HtmlSitemap\Block\Sitemap\Sites" name="html_sitemap_sites" template="Infrangible_HtmlSitemap::sitemap/sites.phtml">
+                    <container name="html_sitemap_sites_additional"/>
+                </block>
+                <container name="html_sitemap_additional"/>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

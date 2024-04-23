@@ -1,0 +1,32 @@
+<?php
+
+declare(strict_types=1);
+
+use Infrangible\HtmlSitemap\Block\Sitemap\Sites;
+use Magento\Framework\View\TemplateEngine\Php;
+
+/**
+ * @author      Andreas Knollmann
+ * @copyright   Copyright (c) 2014-2024 Softwareentwicklung Andreas Knollmann
+ * @license     http://www.opensource.org/licenses/mit-license.php MIT
+ */
+
+/** @var Php $this */
+/** @var Sites $block */
+
+?>
+
+<h3><?php echo __('Sites'); ?></h3>
+
+<?php $pages = $block->getPages(); ?>
+<?php if (count($pages) > 0): ?>
+    <ul class="sitemap-pages">
+        <?php foreach ($pages as $page): ?>
+            <li class="sitemap-page">
+                <a href="<?php echo $block->getPageUrl($page); ?>"><?php echo $page->getTitle(); ?></a>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
+
+<?php echo $block->getChildHtml('html_sitemap_sites_additional'); ?>
