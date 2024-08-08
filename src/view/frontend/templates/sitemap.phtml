@@ -15,7 +15,8 @@ use Magento\Framework\View\TemplateEngine\Php;
 /** @var Sitemap $block */
 
 ?>
-
-<?php echo $block->getChildHtml('html_sitemap_catalog'); ?>
-<?php echo $block->getChildHtml('html_sitemap_sites'); ?>
-<?php echo $block->getChildHtml('html_sitemap_additional'); ?>
+<div id="infrangible-sitemap">
+    <?php echo $block->getChildHtml('html_sitemap_catalog'); ?>
+    <?php echo $block->getChildHtml('html_sitemap_sites'); ?>
+    <?php echo $block->getChildHtml('html_sitemap_additional'); ?>
+<div>
